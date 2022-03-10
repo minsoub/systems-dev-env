@@ -1,0 +1,6 @@
+ARG ELK_VERSION
+
+FROM docker.elastic.co/elasticsearch/elasticsearch:${ELK_VERSION}}
+
+# korea patch
+RUN elasticsearch-plugin install analysis-nori
