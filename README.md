@@ -110,8 +110,17 @@ networks:
 ```
 - 실행
 ```shell
-$ docker-compose -f ./dev-server.yml up -d
-$ docker ps
+minsoub@192 src % docker-compose -f ./dev-server.yml up -d
+minsoub@192 src % docker container ps
+CONTAINER ID   IMAGE                                                  COMMAND                  CREATED             STATUS             PORTS                                                                    NAMES
+741c2468498e   wurstmeister/kafka:2.12-2.3.0                          "start-kafka.sh"         About an hour ago   Up About an hour   0.0.0.0:9092->9092/tcp                                                   kafka
+74004c747869   docker.elastic.co/logstash/logstash:7.10.0             "/usr/local/bin/dock…"   About an hour ago   Up About an hour   0.0.0.0:5000->5000/tcp, 0.0.0.0:5044->5044/tcp, 0.0.0.0:9600->9600/tcp   logstash
+c531f421a505   docker.elastic.co/kibana/kibana:7.10.0                 "/usr/local/bin/dumb…"   About an hour ago   Up About an hour   0.0.0.0:5601->5601/tcp                                                   kibana
+1fe134d40d4a   redis:alpine                                           "docker-entrypoint.s…"   About an hour ago   Up About an hour   0.0.0.0:6379->6379/tcp                                                   redisdb
+2af08525dc3b   docker.elastic.co/elasticsearch/elasticsearch:7.10.0   "/tini -- /usr/local…"   About an hour ago   Up About an hour   0.0.0.0:9200->9200/tcp, 0.0.0.0:9300->9300/tcp                           elasticsearch
+d91a802111bf   wurstmeister/zookeeper:3.4.6                           "/bin/sh -c '/usr/sb…"   About an hour ago   Up About an hour   22/tcp, 2888/tcp, 3888/tcp, 0.0.0.0:2181->2181/tcp                       zookeeper
+85d2aa9eb057   mariadb:10                                             "docker-entrypoint.s…"   About an hour ago   Up About an hour   0.0.0.0:3306->3306/tcp                                                   mysqldb
+minsoub@192 src % 
 ```
 - redis 접속
 ```shell
